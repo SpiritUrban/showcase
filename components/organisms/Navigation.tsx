@@ -1,4 +1,3 @@
-import Link from "next/link";
 import NavLink from "@/components/molecule/NavLink";
 
 /* Альтернативные значения aria-current
@@ -66,8 +65,8 @@ export default function Navigation() {
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
-                                <NavLink href="/" children="Home" />
-                                <NavLink href="/about" children="About" />
+                                <NavLink href="/" >Home</NavLink>
+                                <NavLink href="/about" >About</NavLink>
                             </div>
                         </div>
                     </div>
@@ -120,9 +119,9 @@ export default function Navigation() {
                                 aria-orientation="vertical"
                                 aria-labelledby="user-menu-button"
                             >
-                                <NavLink href="/profile" children="Your Profile" />
-                                <NavLink href="/settings" children="Settings" />
-                                <NavLink href="/signout" children="Sign out" />
+                                <NavLink href="/profile" >Your Profile</NavLink>
+                                <NavLink href="/settings" >Settings</NavLink>
+                                <NavLink href="/signout" >Sign out</NavLink>
                             </div>
                         </div>
                     </div>
@@ -131,8 +130,8 @@ export default function Navigation() {
 
             <div className="sm:hidden" id="mobile-menu">
                 <div className="space-y-1 px-2 pt-2 pb-3 flex flex-col">
-                    <NavLink href="/" children="Home" />
-                    <NavLink href="/about" children="About" />
+                    <NavLink href="/" >Home</NavLink>
+                    <NavLink href="/about" >About</NavLink>
                 </div>
             </div>
         </nav>
