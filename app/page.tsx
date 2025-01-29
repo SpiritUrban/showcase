@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
 
-  fetch("/api/hello")
-  .then((res) => res.json())
-  .then((data) => console.log(data.message));
+  // fetch("/api/hello")
+  // .then((res) => res.json())
+  // .then((data) => console.log(data.message));
 
 
   return (
@@ -12,7 +13,16 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
 
 
-      <a href="/about">О нас</a> | <a href="/contact">Контакты</a>
+
+        {/* Альтернативные значения aria-current
+            Помимо "page", aria-current поддерживает другие значения:
+
+            "step" — для пошаговых процессов.
+            "location" — когда элемент обозначает текущее местоположение.
+            "date" — если это текущая дата (например, в календаре).
+            "time" — если это текущее время.
+            "true" — универсальный вариант для выделения текущего элемента. */}
+
 
         <nav className="bg-gray-800">
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -22,19 +32,11 @@ export default function Home() {
                 <button type="button" className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset" aria-controls="mobile-menu" aria-expanded="false">
                   <span className="absolute -inset-0.5"></span>
                   <span className="sr-only">Open main menu</span>
-                  {/* <!--
-            Icon when menu is closed.
-
-            Menu open: "hidden", Menu closed: "block"
-          --> */}
+                  {/* <!--  Icon when menu is closed.  Menu open: "hidden", Menu closed: "block"   --> */}
                   <svg className="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
                     <path strokeLinecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                   </svg>
-                  {/* <!--
-            Icon when menu is open.
-
-            Menu open: "block", Menu closed: "hidden"
-          --> */}
+                  {/* <!--   Icon when menu is open.  Menu open: "block", Menu closed: "hidden"  --> */}
                   <svg className="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
                     <path strokeLinecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                   </svg>
@@ -42,15 +44,15 @@ export default function Home() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex shrink-0 items-center">
-                  <img className="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company"/>
+                  <img className="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                    <a href="#" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
-                    <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
-                    <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
-                    <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
+                    <Link href="/contact" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</Link>
+                    <Link href="/contact" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</Link>
+
+                    <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
                   </div>
                 </div>
               </div>
@@ -69,7 +71,7 @@ export default function Home() {
                     <button type="button" className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                       <span className="absolute -inset-1.5"></span>
                       <span className="sr-only">Open user menu</span>
-                      <img className="size-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                      <img className="size-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                     </button>
                   </div>
 
@@ -85,9 +87,9 @@ export default function Home() {
           --> */}
                   <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 focus:outline-hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                     {/* <!-- Active: "bg-gray-100 outline-hidden", Not Active: "" --> */}
-                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                    <Link href="/contact">Your Profile</Link>
+                    <Link href="/contact">Settings</Link>
+                    <Link href="/contact">Sign out</Link>
                   </div>
                 </div>
               </div>
@@ -95,6 +97,7 @@ export default function Home() {
           </div>
 
           {/* <!-- Mobile menu, show/hide based on menu state. --> */}
+
           <div className="sm:hidden" id="mobile-menu">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
