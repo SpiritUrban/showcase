@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import NavLink from "@/components/molecule/NavLink";
 
 export default function Home() {
 
@@ -12,7 +13,7 @@ export default function Home() {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
 
-
+      
 
         {/* Альтернативные значения aria-current
             Помимо "page", aria-current поддерживает другие значения:
@@ -49,10 +50,8 @@ export default function Home() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                    <Link href="/contact" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</Link>
-                    <Link href="/contact" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</Link>
-
-                    <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
+                    <NavLink href="/" children="Home"/>
+                    <NavLink href="/about" children="About"/>
                   </div>
                 </div>
               </div>
@@ -85,11 +84,11 @@ export default function Home() {
               From: "transform opacity-100 scale-100"
               To: "transform opacity-0 scale-95"
           --> */}
-                  <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 focus:outline-hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                  <div className="flex flex-col absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 focus:outline-hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                     {/* <!-- Active: "bg-gray-100 outline-hidden", Not Active: "" --> */}
-                    <Link href="/contact">Your Profile</Link>
-                    <Link href="/contact">Settings</Link>
-                    <Link href="/contact">Sign out</Link>
+                    <NavLink href="/profile" children="Your Profile"/>
+                    <NavLink href="/settings" children="Settings"/>
+                    <NavLink href="/signout" children="Sign out"/>
                   </div>
                 </div>
               </div>

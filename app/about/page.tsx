@@ -3,6 +3,8 @@ export default function About() {
     <main>
       <h1>О нас</h1>
       <a href="/">На главную</a>
+
+      
     </main>
   );
 }
