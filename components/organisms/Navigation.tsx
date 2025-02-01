@@ -63,8 +63,8 @@ export default function Navigation() {
                                 className="h-8 w-auto"
                                 src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
                                 alt="Showcase logo"
-                                layout="fill"
-                                objectFit="cover" // или "contain"
+                                width={180}
+                                height={38}
                             />
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
@@ -109,10 +109,12 @@ export default function Navigation() {
                                 >
                                     <span className="absolute -inset-1.5"></span>
                                     <span className="sr-only">Open user menu</span>
-                                    <img
+                                    <Image
                                         className="size-8 rounded-full"
                                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                        alt=""
+                                        alt="Showcase logo"
+                                        width={180}
+                                        height={180}
                                     />
                                 </button>
                             </div>
