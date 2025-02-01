@@ -1,4 +1,4 @@
-import Image from "next/image";
+import PaintingPreview from './../components/molecule/PaintingPreview';
 
 export default function Home() {
 
@@ -7,20 +7,49 @@ export default function Home() {
   // .then((data) => console.log(data.message));
 
 
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+  interface PPProps {
+    title: string;
+    img: string;
+  }
 
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
+  const paintings: PPProps[] = [
+    {
+      title: "Painting 1",
+      img: "/img/paintings/001.jpg",
+    }, {
+      title: "Painting 1",
+      img: "/img/paintings/002.jpg",
+    }, {
+      title: "Painting 1",
+      img: "/img/paintings/003.jpg",
+    }, {
+      title: "Painting 1",
+      img: "/img/paintings/004.jpg",
+    },
+  ];
+
+
+
+  return (
+    <div style={{ height: "calc(100vh - 4rem)" }} className="p-8 pb-20 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] w-full max-w-screen-2xl mx-auto">
+      <main className="flex flex-row gap-8 row-start-2 items-center sm:items-start h-full w-full">
+
+        <div className="h-full w-45">
+          {paintings.map((painting, i) => (
+            <PaintingPreview key={painting.title + i} data={painting} />
+          ))}
+
+        </div>
+
+
+        <div className="h-full w-full bg-gray-600 p-2">
+          x
+        </div>
+
+
 
       </main>
     </div>
   );
 }
+
