@@ -1,4 +1,6 @@
 import NavLink from "@/components/molecule/NavLink";
+import Image from "next/image";
+
 
 /* Альтернативные значения aria-current
 Помимо "page", aria-current поддерживает другие значения:
@@ -57,10 +59,12 @@ export default function Navigation() {
                     </div>
                     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex shrink-0 items-center">
-                            <img
+                            <Image
                                 className="h-8 w-auto"
                                 src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                                alt="Your Company"
+                                alt="Showcase logo"
+                                layout="fill"
+                                objectFit="cover" // или "contain"
                             />
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
