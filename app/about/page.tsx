@@ -1,4 +1,4 @@
-import AboutContent from "./clientPage";
+import ClientPage from "./clientPage";
 
 export default async function About() {
   // Данные, которые будут рендериться на сервере
@@ -6,8 +6,7 @@ export default async function About() {
 
   return (
     <main>
-      <h1>О нас</h1>
-      <AboutContent initialValue={initialValue} />
+      <ClientPage initialValue={initialValue} />
     </main>
   );
 }
