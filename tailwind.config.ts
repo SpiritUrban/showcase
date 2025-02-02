@@ -1,4 +1,5 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 export default {
   content: [
@@ -15,7 +16,7 @@ export default {
     },
   },
   plugins: [
-    function ({ addUtilities }: Config['plugins'][0]) {
+    plugin(function ({ addUtilities }) {
       addUtilities({
         '.scrollbar-hide': {
           'scrollbar-width': 'none', /* Firefox */
@@ -25,6 +26,6 @@ export default {
           display: 'none', /* Chrome, Safari */
         },
       });
-    },
+    }),
   ]
 } satisfies Config;
