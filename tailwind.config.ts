@@ -14,5 +14,17 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }: Config['plugins'][0]) {
+      addUtilities({
+        '.scrollbar-hide': {
+          'scrollbar-width': 'none', /* Firefox */
+          '-ms-overflow-style': 'none', /* Internet Explorer 10+ */
+        },
+        '.scrollbar-hide::-webkit-scrollbar': {
+          display: 'none', /* Chrome, Safari */
+        },
+      });
+    },
+  ]
 } satisfies Config;
