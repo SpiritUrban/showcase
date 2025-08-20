@@ -25,4 +25,5 @@ const paintingsSlice = createSlice({
 });
 
 export const { setPaintings, setSelectedPainting } = paintingsSlice.actions;
+export { paintingsSlice };
 export default paintingsSlice.reducer;
