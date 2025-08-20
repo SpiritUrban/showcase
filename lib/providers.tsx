@@ -1,6 +1,6 @@
 "use client"; // Делаем компонент клиентским
 
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import { Provider } from "react-redux";
 import { makeStore, RootState } from "@/store/store";
 
@@ -11,6 +11,6 @@ export function Providers({
   children: ReactNode;
   initialState?: Partial<RootState>;
 }) {
-  const store = makeStore(initialState);
+  const store = useMemo(() => makeStore(initialState), [initialState]);
   return <Provider store={store}>{children}</Provider>;
 }
