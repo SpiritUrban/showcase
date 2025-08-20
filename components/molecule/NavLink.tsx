@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { ReactNode } from "react";
-import ActiveLink from "@/components/molecule/ActiveLink"; // Подключаем клиентский компонент
+import ActiveLink from "@/components/molecule/ActiveLink";
 
 interface NavLinkProps {
   href: string;
@@ -8,9 +7,5 @@ interface NavLinkProps {
 }
 
 export default function NavLink({ href, children }: NavLinkProps) {
-  return (
-    <Link href={href} className="">
-      <ActiveLink href={href}>{children}</ActiveLink>
-    </Link>
-  );
+  return <ActiveLink href={href}>{children}</ActiveLink>;
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
 import clsx from "clsx";
@@ -29,7 +30,9 @@ export default function ActiveLink({ href, children }: ActiveLinkProps) {
   }, []);
 
   return (
-    <span
+    <Link
+      href={href}
+      aria-current={isActive ? "page" : undefined}
       className={clsx(
         "block rounded-md px-3 py-2 font-medium text-gray-500",
         isMobile ? "text-base" : "text-sm",
@@ -37,6 +40,6 @@ export default function ActiveLink({ href, children }: ActiveLinkProps) {
       )}
     >
       {children}
-    </span>
+    </Link>
   );
 }
