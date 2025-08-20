@@ -1,9 +1,7 @@
 import ClientPage from "./clientPage";
+import { Providers } from "@/lib/providers";
 import { Painting } from '@/interfaces/painting';
-
-export interface InitialState {
-    paintings: Painting[];
-}
+import { RootState } from '@/store/store';
 
 export default async function Home() {
     // Данные, которые будут рендериться на сервере
@@ -62,14 +60,19 @@ export default async function Home() {
         },
     ];
 
-    const initialState: InitialState = {
-        paintings
+    const preloadedState: Partial<RootState> = {
+        paintings: {
+            list: paintings,
+            selectedPainting: null,
+        },
     };
 
     return (
-        <main>
-            <ClientPage initialState={initialState} />
-        </main>
+        <Providers initialState={preloadedState}>
+            <main>
+                <ClientPage />
+            </main>
+        </Providers>
     );
 }
 
