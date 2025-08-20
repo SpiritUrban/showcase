@@ -6,28 +6,16 @@ import { InitialState } from './page';
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store/store";
 import { setPaintings } from "@/store/features/paintingsSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function ClientPage({ initialState }: { initialState: InitialState }) {
   const dispatch = useDispatch();
   const reduxList = useSelector((state: RootState) => state.paintings.list);
   const selectedPainting = useSelector((state: RootState) => state.paintings.selectedPainting);
 
-  const [clientList, setClientList] = useState(initialState.paintings);
-  const [clientSelectedPainting, setClientSelectedPainting] = useState(initialState.paintings[0]);
-
   useEffect(() => {
     dispatch(setPaintings(initialState.paintings));
   }, [dispatch, initialState.paintings]);
-
-
-  useEffect(() => {
-    setClientList(reduxList);
-  }, [reduxList]);
-
-  useEffect(() => {
-    setClientSelectedPainting(selectedPainting ?? initialState.paintings[0]);
-  }, [selectedPainting, initialState.paintings]);
 
 
   // fetch("/api/hello")
@@ -40,7 +28,7 @@ export default function ClientPage({ initialState }: { initialState: InitialStat
 
         {/* left side (paintings list ) */}
         <div className="h-full w-45 overflow-auto scrollbar-hide">
-          {clientList.map((painting, i) => (
+          {(reduxList.length ? reduxList : initialState.paintings).map((painting, i) => (
             <PaintingPreview key={painting.title + i} data={painting} />
           ))}
         </div>
@@ -49,17 +37,17 @@ export default function ClientPage({ initialState }: { initialState: InitialStat
         <div className="h-full w-full overflow-auto scrollbar-hide">
 
           {/* top content (img) */}
-          <Painting data={clientSelectedPainting} />
+          <Painting data={selectedPainting ?? initialState.paintings[0]} />
 
           {/* bottom content (info) */}
           <div className="bg-gray-600 p-4 rounded-lg shadow-lg">
-            <div><b>{clientSelectedPainting.title}</b></div>
-            <div>{clientSelectedPainting.description}</div>
+            <div><b>{(selectedPainting ?? initialState.paintings[0]).title}</b></div>
+            <div>{(selectedPainting ?? initialState.paintings[0]).description}</div>
             <hr className="my-4 border-t border-gray-300" />
 
             <div className="flex flex-row justify-evenly">
-              <div>Size: {clientSelectedPainting.sizeX}cm x {clientSelectedPainting.sizeY}cm</div>
-              <div>Price: {clientSelectedPainting.price}€</div>
+              <div>Size: {(selectedPainting ?? initialState.paintings[0]).sizeX}cm x {(selectedPainting ?? initialState.paintings[0]).sizeY}cm</div>
+              <div>Price: {(selectedPainting ?? initialState.paintings[0]).price}€</div>
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Buy
               </button>
