@@ -12,8 +12,8 @@ interface ActiveLinkProps {
 
 export default function ActiveLink({ href, children }: ActiveLinkProps) {
   const pathname = usePathname();
-  const isActive = pathname === href || pathname.startsWith(href + "/");
 
+  const [isActive, setIsActive] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -28,6 +28,12 @@ export default function ActiveLink({ href, children }: ActiveLinkProps) {
       window.removeEventListener("resize", checkScreenSize);
     };
   }, []);
+
+  useEffect(() => {
+    if (!pathname) return;
+
+    setIsActive(pathname === href || pathname.startsWith(href + "/"));
+  }, [pathname, href]);
 
   return (
     <Link
