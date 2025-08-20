@@ -1,14 +1,14 @@
 import Image from "next/image";
 import styles from "./Painting.module.css";
 
-interface PPProps {
+interface PaintingProps {
     data: {
         title: string;
         img: string;
-    }
+    };
 }
 
-export default function PaintingPreview({ data }: PPProps) {
+export default function Painting({ data }: PaintingProps) {
     return (
         <div className="flex justify-center items-center mb-4">
             <div className="relative w-full">
