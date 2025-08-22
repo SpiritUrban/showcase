@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/organisms/Navigation";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +27,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground`}
+        suppressHydrationWarning
       >
+        <Script id="theme-script" strategy="beforeInteractive">
+          {`
+            if (
+              localStorage.theme === 'dark' ||
+              (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+            ) {
+              document.documentElement.classList.add('dark');
+            } else {
+              document.documentElement.classList.remove('dark');
+            }
+          `}
+        </Script>
         <Navigation />
         {children}
       </body>
