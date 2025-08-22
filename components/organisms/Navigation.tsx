@@ -95,7 +95,7 @@ export default function Navigation() {
                         <button
                             type="button"
                             onClick={toggleTheme}
-                            className="rounded-full p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-white dark:text-gray-300 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                            className="rounded-full p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-0 dark:text-gray-300 dark:hover:text-white"
                             aria-label="Toggle theme"
                         >
                             {theme === "dark" ? (
