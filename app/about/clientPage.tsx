@@ -23,8 +23,8 @@ export default function ClientPage() {
     ];
 
     return (
-        <div className="max-w-xl mx-auto mt-12 p-8 bg-white/80 rounded-xl shadow-lg flex flex-col items-center gap-8">
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">О нас</h1>
+        <div className="max-w-xl mx-auto mt-12 p-8 bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-lg flex flex-col items-center gap-8">
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">О нас</h1>
 
             <ul className="w-full flex flex-col gap-3 mb-4">
                 {arr.map(({ name, href }) => (
@@ -33,7 +33,7 @@ export default function ClientPage() {
                             href={href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block px-4 py-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium transition"
+                            className="block px-4 py-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium transition dark:bg-blue-900 dark:hover:bg-blue-800 dark:text-blue-200"
                         >
                             {name}
                         </a>
@@ -42,7 +42,7 @@ export default function ClientPage() {
             </ul>
 
             <div className="flex flex-col items-center gap-3">
-                <h2 className="text-2xl font-semibold text-gray-700">{reduxValue}</h2>
+                <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">{reduxValue}</h2>
                 <div className="flex gap-2">
                     <button
                         onClick={() => dispatch(increment())}
