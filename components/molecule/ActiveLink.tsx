@@ -40,9 +40,9 @@ export default function ActiveLink({ href, children }: ActiveLinkProps) {
       href={href}
       aria-current={isActive ? "page" : undefined}
       className={clsx(
-        "block rounded-md px-3 py-2 font-medium text-gray-500",
+        "block rounded-md px-3 py-2 font-medium text-gray-500 dark:text-gray-300",
         isMobile ? "text-base" : "text-sm",
-        isActive ? "bg-gray-900 text-white" : "text-gray-500"
+        isActive ? "bg-gray-900 text-white dark:bg-gray-700" : undefined
       )}
     >
       {children}

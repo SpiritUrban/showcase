@@ -1,6 +1,8 @@
+"use client";
+
 import NavLink from "@/components/molecule/NavLink";
 import Image from "next/image";
-
+import { useEffect, useState } from "react";
 
 /* Альтернативные значения aria-current
 Помимо "page", aria-current поддерживает другие значения:
@@ -12,8 +14,23 @@ import Image from "next/image";
 "true" — универсальный вариант для выделения текущего элемента. */
 
 export default function Navigation() {
+    const [theme, setTheme] = useState<"light" | "dark">("light");
+
+    useEffect(() => {
+        const root = document.documentElement;
+        setTheme(root.classList.contains("dark") ? "dark" : "light");
+    }, []);
+
+    const toggleTheme = () => {
+        const root = document.documentElement;
+        const newTheme = theme === "dark" ? "light" : "dark";
+        root.classList.toggle("dark", newTheme === "dark");
+        localStorage.setItem("theme", newTheme);
+        setTheme(newTheme);
+    };
+
     return (
-        <nav className="bg-gray-800 h-16">
+        <nav className="h-16 bg-white dark:bg-gray-800">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="relative flex h-16 items-center justify-between">
                     <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -77,7 +94,48 @@ export default function Navigation() {
                     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                         <button
                             type="button"
-                            className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-none"
+                            onClick={toggleTheme}
+                            className="rounded-full p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-white dark:text-gray-300 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                            aria-label="Toggle theme"
+                        >
+                            {theme === "dark" ? (
+                                <svg
+                                    className="size-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                                    />
+                                </svg>
+                            ) : (
+                                <svg
+                                    className="size-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+                                    />
+                                </svg>
+                            )}
+                        </button>
+
+                        <button
+                            type="button"
+                            className="relative rounded-full bg-gray-100 p-1 text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-white dark:bg-gray-800 dark:hover:text-white dark:focus:ring-offset-gray-800"
                         >
                             <span className="absolute -inset-1.5"></span>
                             <span className="sr-only">View notifications</span>
@@ -120,7 +178,7 @@ export default function Navigation() {
                             </div>
 
                             <div
-                                className="flex flex-col absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 focus:outline-none"
+                                className="flex flex-col absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 focus:outline-none dark:bg-gray-700"
                                 role="menu"
                                 aria-orientation="vertical"
                                 aria-labelledby="user-menu-button"
