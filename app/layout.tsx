@@ -44,8 +44,10 @@ export default function RootLayout({
             }
           `}
         </Script>
-        <Navigation />
-        {children}
+        <div className="flex min-h-screen">
+          <Navigation />
+          <main className="flex-1">{children}</main>
+        </div>
       </body>
     </html>
   );
